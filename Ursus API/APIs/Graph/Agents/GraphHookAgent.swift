@@ -1,5 +1,5 @@
 //
-//  GraphHookApp.swift
+//  GraphHookAgent.swift
 //  Ursus Chat
 //
 //  Created by Daniel Clelland on 24/11/20.
@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import UrsusAirlock
 
-public extension Airlock {
+extension Client {
     
     public func graphHook(ship: Ship) -> GraphHookApp {
         return app(ship: ship, app: "graph-push-hook")

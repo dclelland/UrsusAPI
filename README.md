@@ -20,7 +20,7 @@ Things that would make this codebase nicer:
 
 - [ ] Rename UrsusAirlock to UrsusHTTP
 - [ ] Move `AirlockApp` into UrsusAPI, rename and convert to a protocol
-- [ ] Figure out how to move the reducers into the framework
+- [ ] Figure out how to move the reducers and states into the framework
 - [ ] Add special `Index` and `OrderedDictionary` types
 - [ ] Add `graph-store` client
 - [ ] Add clients for other gall apps

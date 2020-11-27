@@ -1,5 +1,5 @@
 //
-//  GraphStoreApp.swift
+//  GraphStoreAgent.swift
 //  Ursus Chat
 //
 //  Created by Daniel Clelland on 24/11/20.
@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import UrsusAirlock
 
-public extension Airlock {
+extension Client {
     
     public func graphStore(ship: Ship) -> GraphStoreApp {
         return app(ship: ship, app: "graph-store")

@@ -1,5 +1,5 @@
 //
-//  GraphViewApp.swift
+//  GraphViewAgent.swift
 //  Ursus Chat
 //
 //  Created by Daniel Clelland on 24/11/20.
@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import UrsusAirlock
 
-public extension Airlock {
+extension Client {
     
     func graphView(ship: Ship) -> GraphViewApp {
         return app(ship: ship, app: "graph-view-action")
