@@ -103,12 +103,26 @@ public struct Mailbox: Decodable {
     public var config: MailboxConfig
     public var envelopes: [Envelope]
     
+    #warning("TODO: Remove me after `ChatUpdate+Extensions` (in the main app) is removed")
+    
+    public init(config: MailboxConfig, envelopes: [Envelope]) {
+        self.config = config
+        self.envelopes = envelopes
+    }
+    
 }
 
 public struct MailboxConfig: Decodable {
     
     public var length: Int
     public var read: Int
+    
+    #warning("TODO: Remove me after `ChatUpdate+Extensions` (in the main app) is removed")
+    
+    public init(length: Int, read: Int) {
+        self.length = length
+        self.read = read
+    }
     
 }
 
@@ -119,6 +133,16 @@ public struct Envelope: Codable {
     public var author: Ship
     public var when: Date
     public var letter: Letter
+    
+    #warning("TODO: Remove me after `sendMessage` (in the main app) is removed")
+    
+    public init(uid: String, number: Int, author: Ship, when: Date, letter: Letter) {
+        self.uid = uid
+        self.number = number
+        self.author = author
+        self.when = when
+        self.letter = letter
+    }
     
 }
 
