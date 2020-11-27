@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '13.0'
   s.osx.deployment_target = '10.15'
   
-  s.source_files = 'Ursus API/**/*.swift'
+  s.source_files = 'Sources/UrsusAPI/**/*.swift'
   
-  s.dependency 'UrsusAirlock', '~> 1.9'
+  s.dependency 'UrsusHTTP', '~> 1.10'
 end
