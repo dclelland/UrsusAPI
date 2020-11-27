@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+public protocol InviteStoreState {
+    
+    var invites: Invites { get set }
+    
+}
+
+public func reduce(_ state: inout InviteStoreState, response: InviteStoreAgent.SubscribeResponse) throws {
+    
+}

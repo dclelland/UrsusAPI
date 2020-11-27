@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+public protocol GroupStoreState {
+    
+    var groups: Groups { get set }
+    
+}
+
+public func reduce(_ state: inout GroupStoreState, response: GroupStoreAgent.SubscribeResponse) throws {
+    
+}

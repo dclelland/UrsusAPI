@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+public protocol MetadataStoreState {
+    
+    var associations: Associations { get set }
+    
+}
+
+public func reduce(_ state: inout MetadataStoreState, response: MetadataStoreAgent.SubscribeResponse) throws {
+    
+}

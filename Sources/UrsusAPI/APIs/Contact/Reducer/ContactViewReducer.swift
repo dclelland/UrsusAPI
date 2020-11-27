@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+public protocol ContactViewState {
+    
+    var contacts: Rolodex { get set }
+    
+}
+
+public func reduce(_ state: inout ContactViewState, response: ContactViewAgent.SubscribeResponse) throws {
+    
+}

@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+public protocol ChatHookState {
+    
+    var synced: Synced { get set }
+    
+}
+
+public func reduce(_ state: inout ChatHookState, response: ChatHookAgent.SubscribeResponse) throws {
+    
+}
