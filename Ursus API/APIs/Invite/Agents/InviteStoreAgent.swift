@@ -1,5 +1,5 @@
 //
-//  InviteStoreApp.swift
+//  InviteStoreAgent.swift
 //  Ursus Chat
 //
 //  Created by Daniel Clelland on 18/06/20.
@@ -12,13 +12,13 @@ import UrsusAirlock
 
 extension Client {
     
-    public func inviteStore(ship: Ship) -> InviteStoreApp {
-        return app(ship: ship, app: "invite-store")
+    public func inviteStoreAgent(ship: Ship) -> InviteStoreAgent {
+        return agent(ship: ship, app: "invite-store")
     }
     
 }
 
-public class InviteStoreApp: AirlockApp {
+public class InviteStoreAgent: Agent {
     
     @discardableResult public func allSubscribeRequest(handler: @escaping (SubscribeEvent<Result<SubscribeResponse, Error>>) -> Void) -> DataRequest {
         return subscribeRequest(path: "/all", handler: handler)
@@ -26,7 +26,7 @@ public class InviteStoreApp: AirlockApp {
     
 }
 
-extension InviteStoreApp {
+extension InviteStoreAgent {
     
     public enum SubscribeResponse: Decodable {
         

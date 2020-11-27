@@ -12,15 +12,15 @@ import UrsusAirlock
 
 extension Client {
     
-    public func graphHook(ship: Ship) -> GraphHookApp {
-        return app(ship: ship, app: "graph-push-hook")
+    public func graphHookAgent(ship: Ship) -> GraphHookAgent {
+        return agent(ship: ship, app: "graph-push-hook")
     }
     
 }
 
-public class GraphHookApp: AirlockApp {
+public class GraphHookAgent: Agent {
     
-    #warning("TODO: Finish GraphHookApp")
+    #warning("TODO: Finish GraphHookAgent")
     
 //    private hookAction(ship: Patp, action: any): Promise<any> {
 //      return this.action('graph-push-hook', 'graph-update', action);

@@ -1,5 +1,5 @@
 //
-//  ContactViewApp.swift
+//  ContactViewAgent.swift
 //  Ursus Chat
 //
 //  Created by Daniel Clelland on 18/06/20.
@@ -12,13 +12,13 @@ import UrsusAirlock
 
 extension Client {
     
-    public func contactView(ship: Ship) -> ContactViewApp {
-        return app(ship: ship, app: "contact-view")
+    public func contactViewAgent(ship: Ship) -> ContactViewAgent {
+        return agent(ship: ship, app: "contact-view")
     }
     
 }
 
-public class ContactViewApp: AirlockApp {
+public class ContactViewAgent: Agent {
     
     @discardableResult public func primarySubscribeRequest(handler: @escaping (SubscribeEvent<Result<SubscribeResponse, Error>>) -> Void) -> DataRequest {
         return subscribeRequest(path: "/primary", handler: handler)
@@ -26,7 +26,7 @@ public class ContactViewApp: AirlockApp {
     
 }
 
-extension ContactViewApp {
+extension ContactViewAgent {
     
     public enum SubscribeResponse: Decodable {
         

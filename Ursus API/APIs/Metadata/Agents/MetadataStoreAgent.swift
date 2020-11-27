@@ -1,5 +1,5 @@
 //
-//  MetadataStore.swift
+//  MetadataStoreAgent.swift
 //  Ursus Chat
 //
 //  Created by Daniel Clelland on 18/06/20.
@@ -12,13 +12,13 @@ import UrsusAirlock
 
 extension Client {
     
-    public func metadataStore(ship: Ship) -> MetadataStoreApp {
-        return app(ship: ship, app: "metadata-store")
+    public func metadataStoreAgent(ship: Ship) -> MetadataStoreAgent {
+        return agent(ship: ship, app: "metadata-store")
     }
     
 }
 
-public class MetadataStoreApp: AirlockApp {
+public class MetadataStoreAgent: Agent {
     
     @discardableResult public func allSubscribeRequest(handler: @escaping (SubscribeEvent<Result<SubscribeResponse, Error>>) -> Void) -> DataRequest {
         return subscribeRequest(path: "/all", handler: handler)
@@ -30,7 +30,7 @@ public class MetadataStoreApp: AirlockApp {
     
 }
 
-extension MetadataStoreApp {
+extension MetadataStoreAgent {
     
     public enum SubscribeResponse: Decodable {
         

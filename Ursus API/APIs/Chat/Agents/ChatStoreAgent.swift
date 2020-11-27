@@ -1,5 +1,5 @@
 //
-//  ChatStoreApp.swift
+//  ChatStoreAgent.swift
 //  Ursus Chat
 //
 //  Created by Daniel Clelland on 23/07/20.
@@ -12,22 +12,22 @@ import UrsusAirlock
 
 extension Client {
     
-    public func chatStore(ship: Ship) -> ChatStoreApp {
-        return app(ship: ship, app: "chat-store")
+    public func chatStoreAgent(ship: Ship) -> ChatStoreAgent {
+        return agent(ship: ship, app: "chat-store")
     }
     
 }
 
-public class ChatStoreApp: AirlockApp {
+public class ChatStoreAgent: Agent {
     
     @discardableResult public func readPokeRequest(path: Path, handler: @escaping (PokeEvent) -> Void) -> DataRequest {
-        let action = ChatStoreApp.Action.read(Read(path: path))
+        let action = Action.read(Read(path: path))
         return pokeRequest(json: action, handler: handler)
     }
     
 }
 
-extension ChatStoreApp {
+extension ChatStoreAgent {
     
     public enum Action: Encodable {
         

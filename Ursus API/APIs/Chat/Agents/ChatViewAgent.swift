@@ -1,5 +1,5 @@
 //
-//  ChatViewApp.swift
+//  ChatViewAgent.swift
 //  Ursus Chat
 //
 //  Created by Daniel Clelland on 16/06/20.
@@ -12,31 +12,31 @@ import UrsusAirlock
 
 extension Client {
     
-    public func chatView(ship: Ship) -> ChatViewApp {
-        return app(ship: ship, app: "chat-view")
+    public func chatViewAgent(ship: Ship) -> ChatViewAgent {
+        return agent(ship: ship, app: "chat-view")
     }
     
 }
 
-public class ChatViewApp: AirlockApp {
+public class ChatViewAgent: Agent {
     
     @discardableResult public func primarySubscribeRequest(handler: @escaping (SubscribeEvent<Result<SubscribeResponse, Error>>) -> Void) -> DataRequest {
         return subscribeRequest(path: "/primary", handler: handler)
     }
     
-    @discardableResult public func messagesRequest(path: Path, start: Int, end: Int, handler: @escaping (AFResult<ChatViewApp.SubscribeResponse>) -> Void) -> DataRequest {
+    @discardableResult public func messagesRequest(path: Path, start: Int, end: Int, handler: @escaping (AFResult<SubscribeResponse>) -> Void) -> DataRequest {
         let url = client.credentials.url.appendingPathComponent("/chat-view/paginate/\(start)/\(end)\(path)")
         return client.session
             .request(url)
             .validate()
-            .responseDecodable(of: ChatViewApp.SubscribeResponse.self, decoder: AirlockJSONDecoder()) { response in
+            .responseDecodable(of: SubscribeResponse.self, decoder: AirlockJSONDecoder()) { response in
                 handler(response.result)
             }
     }
     
 }
 
-extension ChatViewApp {
+extension ChatViewAgent {
     
     public enum SubscribeResponse: Decodable {
         

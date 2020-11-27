@@ -1,5 +1,5 @@
 //
-//  GroupStoreApp.swift
+//  GroupStoreAgent.swift
 //  Ursus Chat
 //
 //  Created by Daniel Clelland on 30/07/20.
@@ -12,13 +12,13 @@ import UrsusAirlock
 
 extension Client {
     
-    public func groupStore(ship: Ship) -> GroupStoreApp {
-        return app(ship: ship, app: "group-store")
+    public func groupStoreAgent(ship: Ship) -> GroupStoreAgent {
+        return agent(ship: ship, app: "group-store")
     }
     
 }
 
-public class GroupStoreApp: AirlockApp {
+public class GroupStoreAgent: Agent {
     
     @discardableResult public func groupsSubscribeRequest(handler: @escaping (SubscribeEvent<Result<SubscribeResponse, Error>>) -> Void) -> DataRequest {
         return subscribeRequest(path: "/groups", handler: handler)
@@ -26,7 +26,7 @@ public class GroupStoreApp: AirlockApp {
     
 }
 
-extension GroupStoreApp {
+extension GroupStoreAgent {
     
     public enum SubscribeResponse: Decodable {
 

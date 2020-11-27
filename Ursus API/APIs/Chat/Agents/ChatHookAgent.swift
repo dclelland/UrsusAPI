@@ -1,5 +1,5 @@
 //
-//  ChatHookApp.swift
+//  ChatHookAgent.swift
 //  Ursus Chat
 //
 //  Created by Daniel Clelland on 18/06/20.
@@ -12,26 +12,26 @@ import UrsusAirlock
 
 extension Client {
     
-    public func chatHook(ship: Ship) -> ChatHookApp {
-        return app(ship: ship, app: "chat-hook")
+    public func chatHookAgent(ship: Ship) -> ChatHookAgent {
+        return agent(ship: ship, app: "chat-hook")
     }
     
 }
 
-public class ChatHookApp: AirlockApp {
+public class ChatHookAgent: Agent {
     
     @discardableResult public func syncedSubscribeRequest(handler: @escaping (SubscribeEvent<Result<SubscribeResponse, Error>>) -> Void) -> DataRequest {
         return subscribeRequest(path: "/synced", handler: handler)
     }
     
     @discardableResult public func messagePokeRequest(path: Path, envelope: Envelope, handler: @escaping (PokeEvent) -> Void) -> DataRequest {
-        let action = ChatHookApp.Action.message(Message(path: path, envelope: envelope))
+        let action = Action.message(Message(path: path, envelope: envelope))
         return pokeRequest(json: action, handler: handler)
     }
     
 }
 
-extension ChatHookApp {
+extension ChatHookAgent {
     
     public enum SubscribeResponse: Decodable {
         

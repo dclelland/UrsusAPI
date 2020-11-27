@@ -11,13 +11,13 @@ import UrsusAirlock
 
 extension Client {
     
-    public func app<T: AirlockApp>(ship: Ship, app: App) -> T {
+    public func agent<T: Agent>(ship: Ship, app: App) -> T {
         return T(client: self, ship: ship, app: app)
     }
     
 }
 
-open class AirlockApp {
+open class Agent {
     
     public var client: Client
     public var ship: Ship
@@ -31,7 +31,7 @@ open class AirlockApp {
     
 }
 
-extension AirlockApp {
+extension Agent {
     
     @discardableResult public func scryRequest(path: Path) -> DataRequest {
         return client.scryRequest(app: app, path: path)
@@ -43,7 +43,7 @@ extension AirlockApp {
     
 }
 
-extension AirlockApp {
+extension Agent {
     
     @discardableResult public func ackRequest(eventID: Int) -> DataRequest {
         return client.ackRequest(eventID: eventID)

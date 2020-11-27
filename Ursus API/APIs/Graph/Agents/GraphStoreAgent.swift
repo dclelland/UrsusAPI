@@ -12,13 +12,13 @@ import UrsusAirlock
 
 extension Client {
     
-    public func graphStore(ship: Ship) -> GraphStoreApp {
-        return app(ship: ship, app: "graph-store")
+    public func graphStoreAgent(ship: Ship) -> GraphStoreAgent {
+        return agent(ship: ship, app: "graph-store")
     }
     
 }
 
-public class GraphStoreApp: AirlockApp {
+public class GraphStoreAgent: Agent {
     
     @discardableResult public func keysSubscribeRequest(handler: @escaping (SubscribeEvent<Result<SubscribeResponse, Error>>) -> Void) -> DataRequest {
         return subscribeRequest(path: "/keys", handler: handler)
@@ -28,7 +28,7 @@ public class GraphStoreApp: AirlockApp {
         return subscribeRequest(path: "/updates", handler: handler)
     }
     
-    #warning("TODO: Finish GraphStoreApp")
+    #warning("TODO: Finish GraphStoreAgent")
     
 //    private storeAction(action: any): Promise<any> {
 //      return this.action('graph-store', 'graph-update', action)
@@ -71,7 +71,7 @@ public class GraphStoreApp: AirlockApp {
     
 }
 
-extension GraphStoreApp {
+extension GraphStoreAgent {
     
     public enum SubscribeResponse: Decodable {
         

@@ -12,15 +12,15 @@ import UrsusAirlock
 
 extension Client {
     
-    func graphView(ship: Ship) -> GraphViewApp {
-        return app(ship: ship, app: "graph-view-action")
+    func graphViewAgent(ship: Ship) -> GraphViewAgent {
+        return agent(ship: ship, app: "graph-view-action")
     }
     
 }
 
-public class GraphViewApp: AirlockApp {
+public class GraphViewAgent: Agent {
     
-    #warning("TODO: Finish GraphViewApp")
+    #warning("TODO: Finish GraphViewAgent")
     
 //    private viewAction(threadName: string, action: any) {
 //      return this.spider('graph-view-action', 'json', threadName, action);
