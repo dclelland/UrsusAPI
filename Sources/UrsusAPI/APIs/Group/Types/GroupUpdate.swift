@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import UrsusAirlock
+import UrsusHTTP
 
 public enum GroupUpdate: Decodable {
     
@@ -162,7 +162,7 @@ public enum Tag: Decodable {
         case (.failure, .success(let roleTag)):
             self = .role(roleTag)
         default:
-            throw DecodingError.dataCorruptedError(type(of: self), at: decoder.codingPath, in: container)
+            throw DecodingError.dataCorruptedError(type(of: self), at: decoder.codingPath)
         }
     }
     

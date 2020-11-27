@@ -18,16 +18,13 @@ I can probably help set up Carthage or Swift Package Manager support if you need
 
 Things that would make this codebase nicer:
 
-- [ ] Rename UrsusAirlock to UrsusHTTP
-- [ ] Move `AirlockApp` into UrsusAPI, rename and convert to a protocol
+- [ ] Convert agent to a protocol
 - [ ] Figure out how to move the reducers and states into the framework
 - [ ] Add special `Index` and `OrderedDictionary` types
-- [ ] Add `graph-store` client
-- [ ] Add clients for other gall apps
+- [ ] Finish all clients up to spec 
 - [ ] Split clients into separate subspecs
-- [ ] Add special `DecodingError` helper (both to UrsusAirlock and UrsusAPI)
 - [ ] Better documentation/examples.
 
 ## Dependencies
 
-- [UrsusAirlock](https://github.com/dclelland/UrsusAirlock)
+- [UrsusHTTP](https://github.com/dclelland/UrsusHTTP)

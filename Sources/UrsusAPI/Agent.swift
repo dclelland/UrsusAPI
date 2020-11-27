@@ -7,7 +7,7 @@
 
 import Foundation
 import Alamofire
-import UrsusAirlock
+import UrsusHTTP
 
 extension Client {
     
@@ -37,7 +37,7 @@ extension Agent {
         return client.scryRequest(app: app, path: path)
     }
     
-    @discardableResult public func spiderRequest(input: Mark, thread: UrsusAirlock.Thread, output: Mark) -> DataRequest {
+    @discardableResult public func spiderRequest(input: Mark, thread: UrsusHTTP.Thread, output: Mark) -> DataRequest {
         return client.spiderRequest(input: input, thread: thread, output: output)
     }
     

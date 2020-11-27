@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import UrsusAirlock
+import UrsusHTTP
 
 public enum InviteUpdate: Decodable {
     
