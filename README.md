@@ -14,6 +14,16 @@ pod 'UrsusAPI', '~> 0.1'
 
 I can probably help set up Carthage or Swift Package Manager support if you need it.
 
+## Todo list
+
+Things that would make this codebase nicer:
+
+- [ ] Rename UrsusAirlock to UrsusHTTP
+- [ ] Add special `Index` and `OrderedDictionary` types
+- [ ] Add `graph-store` client
+- [ ] Add clients for other gall apps
+- [ ] Better documentation/examples.
+
 ## Dependencies
 
 - [UrsusAirlock](https://github.com/dclelland/UrsusAirlock)
