@@ -233,8 +233,14 @@ public struct Resource: Decodable {
     public var ship: Ship
     public var name: String
     
+    #warning("Review both these helper methods")
+    
     public var description: String {
         return "\(Ship.Prefixless(ship))/\(name)"
+    }
+    
+    public var path: Path {
+        return "/ship/\(ship.description)/\(name)"
     }
     
 }

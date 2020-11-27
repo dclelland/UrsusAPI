@@ -18,8 +18,8 @@ I can probably help set up Carthage or Swift Package Manager support if you need
 
 Things that would make this codebase nicer:
 
-- [ ] Convert agent to a protocol
-- [ ] Figure out how to move the reducers and states into the framework
+- [ ] Convert agent to a protocol; rename to UrbitApp?
+- [ ] Figure out how to unify agents; agent pokes/subscribes; state; reducers
 - [ ] Add special `Index` and `OrderedDictionary` types
 - [ ] Finish all clients up to spec 
 - [ ] Split clients into separate subspecs

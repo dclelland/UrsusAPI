@@ -13,6 +13,9 @@ public protocol ChatHookState {
     
 }
 
-public func reduce(_ state: inout ChatHookState, response: ChatHookAgent.SubscribeResponse) throws {
-    
+public func reduce(_ state: inout ChatHookState, _ response: ChatHookAgent.SubscribeResponse) throws {
+    switch response {
+    case .chatHookUpdate(let update):
+        state.synced = update
+    }
 }

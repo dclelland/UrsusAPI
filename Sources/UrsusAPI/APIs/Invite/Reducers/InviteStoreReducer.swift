@@ -14,6 +14,22 @@ public protocol InviteStoreState {
     
 }
 
-public func reduce(_ state: inout InviteStoreState, response: InviteStoreAgent.SubscribeResponse) throws {
-    
+public func reduce(_ state: inout InviteStoreState, _ response: InviteStoreAgent.SubscribeResponse) throws {
+    switch response {
+    case .inviteUpdate(let update):
+        switch update {
+        case .initial(let initial):
+            state.invites = initial
+        case .create(let create):
+            state.invites[create.path] = [:]
+        case .delete(let delete):
+            state.invites[delete.path] = nil
+        case .invite(let invite):
+            state.invites[invite.path]?[invite.uid] = invite.invite
+        case .accepted(let accepted):
+            state.invites[accepted.path]?[accepted.uid] = nil
+        case .decline(let decline):
+            state.invites[decline.path]?[decline.uid] = nil
+        }
+    }
 }
