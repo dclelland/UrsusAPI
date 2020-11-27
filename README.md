@@ -25,6 +25,7 @@ Things that would make this codebase nicer:
 - [ ] Add `graph-store` client
 - [ ] Add clients for other gall apps
 - [ ] Split clients into separate subspecs
+- [ ] Add special `DecodingError` helper (both to UrsusAirlock and UrsusAPI)
 - [ ] Better documentation/examples.
 
 ## Dependencies
