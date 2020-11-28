@@ -20,6 +20,7 @@ Things that would make this codebase nicer:
 
 - [ ] Convert agent to a protocol; rename to UrbitApp?
 - [ ] Figure out how to unify agents; agent pokes/subscribes; state; reducers; review thunks up in the main app
+    - [ ] `URLRequest` implementing `AgentRequest` (`AppRequest`?) enum type thing idea
 - [ ] Add special `Index` and `OrderedDictionary` types
 - [ ] Finish all clients up to spec 
 - [ ] Split clients into separate subspecs
