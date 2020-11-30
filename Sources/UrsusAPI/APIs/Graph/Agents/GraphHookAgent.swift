@@ -12,13 +12,17 @@ import UrsusHTTP
 
 extension Client {
     
-    public func graphHookAgent(ship: Ship) -> GraphHookAgent {
-        return agent(ship: ship, app: "graph-push-hook")
+    public func graphHookAgent(ship: Ship, state: ContactViewAgent.State = .init()) -> GraphHookAgent {
+        return agent(ship: ship, app: "graph-push-hook", state: state)
     }
     
 }
 
-public class GraphHookAgent: Agent {
+public class GraphHookAgent: Agent<GraphHookAgent.State, GraphHookAgent.Request> {
+    
+    public struct State: AgentState { }
+    
+    public enum Request: AgentRequest { }
     
     #warning("TODO: Finish GraphHookAgent")
     

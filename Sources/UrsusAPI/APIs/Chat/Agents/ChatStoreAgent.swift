@@ -12,13 +12,25 @@ import UrsusHTTP
 
 extension Client {
     
-    public func chatStoreAgent(ship: Ship) -> ChatStoreAgent {
-        return agent(ship: ship, app: "chat-store")
+    public func chatStoreAgent(ship: Ship, state: ChatStoreAgent.State = .init()) -> ChatStoreAgent {
+        return agent(ship: ship, app: "chat-store", state: state)
     }
     
 }
 
-public class ChatStoreAgent: Agent {
+public class ChatStoreAgent: Agent<ChatStoreAgent.State, ChatStoreAgent.Request> {
+    
+    public struct State: AgentState {
+        
+        public init()
+        
+    }
+    
+    public enum Request: AgentRequest { }
+    
+}
+
+extension ChatStoreAgent {
     
     @discardableResult public func readPokeRequest(path: Path, handler: @escaping (PokeEvent) -> Void) -> DataRequest {
         let action = Action.read(Read(path: path))

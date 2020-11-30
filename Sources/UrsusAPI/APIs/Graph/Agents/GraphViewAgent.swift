@@ -12,13 +12,21 @@ import UrsusHTTP
 
 extension Client {
     
-    func graphViewAgent(ship: Ship) -> GraphViewAgent {
+    func graphViewAgent(ship: Ship, state: GraphViewAgent.State = .init()) -> GraphViewAgent {
         return agent(ship: ship, app: "graph-view-action")
     }
     
 }
 
-public class GraphViewAgent: Agent {
+public class GraphViewAgent: Agent<GraphViewAgent.State, GraphViewAgent.Request> {
+    
+    public struct State: AgentState {
+        
+        public init() { }
+        
+    }
+    
+    public enum Request: AgentRequest { }
     
     #warning("TODO: Finish GraphViewAgent")
     

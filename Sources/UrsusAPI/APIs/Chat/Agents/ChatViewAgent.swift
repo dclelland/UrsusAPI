@@ -12,13 +12,33 @@ import UrsusHTTP
 
 extension Client {
     
-    public func chatViewAgent(ship: Ship) -> ChatViewAgent {
-        return agent(ship: ship, app: "chat-view")
+    public func chatViewAgent(ship: Ship, state: ChatViewAgent.State = .init()) -> ChatViewAgent {
+        return agent(ship: ship, app: "chat-view", state: state)
     }
     
 }
 
-public class ChatViewAgent: Agent {
+public class ChatViewAgent: Agent<ChatViewAgent.State, ChatViewAgent.Request> {
+    
+    public struct State: AgentState {
+        
+        public var inbox: Inbox
+        public var pendingMessages: [Path: [Envelope]]
+        public var loadingMessages: [Path: Bool]
+        
+        public init(inbox: Inbox = .init(), pendingMessages: [Path: [Envelope]] = .init(), loadingMessages: [Path: Bool] = .init()) {
+            self.inbox = inbox
+            self.pendingMessages = pendingMessages
+            self.loadingMessages = loadingMessages
+        }
+        
+    }
+    
+    public enum Request: AgentRequest { }
+    
+}
+
+extension ChatViewAgent {
     
     @discardableResult public func primarySubscribeRequest(handler: @escaping (SubscribeEvent<Result<SubscribeResponse, Error>>) -> Void) -> DataRequest {
         return subscribeRequest(path: "/primary", handler: handler)

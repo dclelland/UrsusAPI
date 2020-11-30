@@ -1,8 +1,8 @@
 //
-//  Agent.swift
-//  Alamofire
+//  UrbitApp.swift
+//  UrsusAPI
 //
-//  Created by Daniel Clelland on 27/11/20.
+//  Created by Daniel Clelland on 28/11/20.
 //
 
 import Foundation
@@ -11,22 +11,32 @@ import UrsusHTTP
 
 extension Client {
     
-    public func agent<T: Agent>(ship: Ship, app: App) -> T {
-        return T(client: self, ship: ship, app: app)
+    public func agent<State: AgentState, Request: AgentRequest, A: Agent<State, Request>>(ship: Ship, app: App, state: State = .init()) -> A {
+        return A(client: self, ship: ship, app: app, state: state)
     }
     
 }
 
-open class Agent {
+open class Agent<State: AgentState, Request: AgentRequest> {
     
     public var client: Client
     public var ship: Ship
     public var app: App
+    public var state: State
     
-    required public init(client: Client, ship: Ship, app: App) {
+    required public init(client: Client, ship: Ship, app: App, state: State = .init()) {
         self.client = client
         self.ship = ship
         self.app = app
+        self.state = state
+    }
+    
+}
+
+extension Agent {
+    
+    @discardableResult public func request(_ request: Request) -> DataRequest {
+        fatalError()
     }
     
 }

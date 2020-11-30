@@ -12,13 +12,27 @@ import UrsusHTTP
 
 extension Client {
     
-    public func graphStoreAgent(ship: Ship) -> GraphStoreAgent {
-        return agent(ship: ship, app: "graph-store")
+    public func graphStoreAgent(ship: Ship, state: GraphStoreAgent.State = .init()) -> GraphStoreAgent {
+        return agent(ship: ship, app: "graph-store", state: state)
     }
     
 }
 
-public class GraphStoreAgent: Agent {
+public class GraphStoreAgent: Agent<GraphStoreAgent.State, GraphStoreAgent.Request> {
+    
+    public struct State: AgentState {
+        
+        public var graphs: Graphs
+        public var graphKeys: Set<String>
+        
+        public init(graphs: Graphs = .init(), graphKeys: Set<String> = .init()) {
+            self.graphs = graphs
+            self.graphKeys = graphKeys
+        }
+        
+    }
+    
+    public enum Request: AgentRequest { }
     
     @discardableResult public func keysSubscribeRequest(handler: @escaping (SubscribeEvent<Result<SubscribeResponse, Error>>) -> Void) -> DataRequest {
         return subscribeRequest(path: "/keys", handler: handler)

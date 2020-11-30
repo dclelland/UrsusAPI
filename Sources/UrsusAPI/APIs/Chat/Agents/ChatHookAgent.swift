@@ -12,13 +12,29 @@ import UrsusHTTP
 
 extension Client {
     
-    public func chatHookAgent(ship: Ship) -> ChatHookAgent {
-        return agent(ship: ship, app: "chat-hook")
+    public func chatHookAgent(ship: Ship, state: ChatHookAgent.State = .init()) -> ChatHookAgent {
+        return agent(ship: ship, app: "chat-hook", state: state)
     }
     
 }
 
-public class ChatHookAgent: Agent {
+public class ChatHookAgent: Agent<ChatHookAgent.State, ChatHookAgent.Request> {
+    
+    public struct State: AgentState {
+        
+        public var synced: Synced
+        
+        public init(synced: Synced = .init()) {
+            self.synced = synced
+        }
+        
+    }
+    
+    public enum Request: AgentRequest { }
+    
+}
+
+extension ChatHookAgent {
     
     @discardableResult public func syncedSubscribeRequest(handler: @escaping (SubscribeEvent<Result<SubscribeResponse, Error>>) -> Void) -> DataRequest {
         return subscribeRequest(path: "/synced", handler: handler)

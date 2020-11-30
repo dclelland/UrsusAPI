@@ -12,13 +12,25 @@ import UrsusHTTP
 
 extension Client {
     
-    public func metadataStoreAgent(ship: Ship) -> MetadataStoreAgent {
-        return agent(ship: ship, app: "metadata-store")
+    public func metadataStoreAgent(ship: Ship, state: MetadataStoreAgent.State = .init()) -> MetadataStoreAgent {
+        return agent(ship: ship, app: "metadata-store", state: state)
     }
     
 }
 
-public class MetadataStoreAgent: Agent {
+public class MetadataStoreAgent: Agent<MetadataStoreAgent.State, MetadataStoreAgent.Request> {
+    
+    public struct State: AgentState {
+        
+        public var associations: Associations
+        
+        public init(associations: Associations = .init()) {
+            self.associations = associations
+        }
+        
+    }
+    
+    public enum Request: AgentRequest { }
     
     @discardableResult public func allSubscribeRequest(handler: @escaping (SubscribeEvent<Result<SubscribeResponse, Error>>) -> Void) -> DataRequest {
         return subscribeRequest(path: "/all", handler: handler)

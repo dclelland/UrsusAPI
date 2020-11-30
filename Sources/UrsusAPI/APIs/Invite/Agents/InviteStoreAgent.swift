@@ -12,13 +12,25 @@ import UrsusHTTP
 
 extension Client {
     
-    public func inviteStoreAgent(ship: Ship) -> InviteStoreAgent {
-        return agent(ship: ship, app: "invite-store")
+    public func inviteStoreAgent(ship: Ship, state: InviteStoreAgent.State = .init()) -> InviteStoreAgent {
+        return agent(ship: ship, app: "invite-store", state: state)
     }
     
 }
 
-public class InviteStoreAgent: Agent {
+public class InviteStoreAgent: Agent<InviteStoreAgent.State, InviteStoreAgent.Request> {
+    
+    public struct State: AgentState {
+        
+        public var invites: Invites
+        
+        public init(invites: Invites = .init()) {
+            self.invites = invites
+        }
+        
+    }
+    
+    public enum Request: AgentRequest { }
     
     @discardableResult public func allSubscribeRequest(handler: @escaping (SubscribeEvent<Result<SubscribeResponse, Error>>) -> Void) -> DataRequest {
         return subscribeRequest(path: "/all", handler: handler)

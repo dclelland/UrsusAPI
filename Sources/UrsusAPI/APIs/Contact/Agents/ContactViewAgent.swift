@@ -12,13 +12,29 @@ import UrsusHTTP
 
 extension Client {
     
-    public func contactViewAgent(ship: Ship) -> ContactViewAgent {
-        return agent(ship: ship, app: "contact-view")
+    public func contactViewAgent(ship: Ship, state: ContactViewAgent.State = .init()) -> ContactViewAgent {
+        return agent(ship: ship, app: "contact-view", state: state)
     }
     
 }
 
-public class ContactViewAgent: Agent {
+public class ContactViewAgent: Agent<ContactViewAgent.State, ContactViewAgent.Request> {
+    
+    public struct State: AgentState {
+        
+        public var contacts: Rolodex
+        
+        public init(contacts: Rolodex = .init()) {
+            self.contacts = contacts
+        }
+        
+    }
+    
+    public enum Request: AgentRequest { }
+    
+}
+
+extension ContactViewAgent {
     
     @discardableResult public func primarySubscribeRequest(handler: @escaping (SubscribeEvent<Result<SubscribeResponse, Error>>) -> Void) -> DataRequest {
         return subscribeRequest(path: "/primary", handler: handler)
