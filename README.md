@@ -4,6 +4,8 @@ An Urbit API/`%gall` agent client for iOS/macOS in Swift.
 
 See my [Ursus Chat](https://github.com/dclelland/UrsusChat) repository for a demo project.
 
+[![awesome urbit badge](https://img.shields.io/badge/~-awesome%20urbit-lightgrey)](https://github.com/urbit/awesome-urbit)
+
 ## Installation
 
 Ursus can be installed using Cocoapods by adding the following line to your podfile:
